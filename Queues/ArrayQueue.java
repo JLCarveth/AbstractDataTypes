@@ -6,11 +6,18 @@
  */
 public class ArrayQueue<E> implements Queue<E> {
 
+    /**
+     * Since this is an array implementation, this queue must have a 
+     * fixed size.
+     */
     private int capacity = 1000;
     private int size;
     private int front, rear;
     private E[] data;
 
+    /**
+     * Constructor for default capacity of 1000.
+     */
     public ArrayQueue() {
         size = 0;
         front = 0;
@@ -18,6 +25,10 @@ public class ArrayQueue<E> implements Queue<E> {
         data = (E[]) new Object[capacity];
     }
 
+    /**
+     * Constructor for a custom capacity
+     * @param capacity the maximum number of elements that cn be added to the queue.
+     */
     public ArrayQueue(int capacity) {
         this.capacity = capacity;
         size = 0;
@@ -39,6 +50,7 @@ public class ArrayQueue<E> implements Queue<E> {
     public boolean isFull() {
         return (size == capacity);
     }
+
     /**
      * Adds an element onto the end of the queue
      * @param e The Element to be added to the queue
@@ -55,6 +67,7 @@ public class ArrayQueue<E> implements Queue<E> {
         }
         size++;
     }
+
     /**
      * Removes the 'oldest' element in the queue.
      * @return the removed element
@@ -70,12 +83,14 @@ public class ArrayQueue<E> implements Queue<E> {
             return temp;
         }
     }
+
     /**
      * @return the value of the front element without dequeuing it
      */
     public E peek() {
         return data[front];
     }
+
     /**
      * Removes all elements from the queue.
      */
@@ -84,6 +99,10 @@ public class ArrayQueue<E> implements Queue<E> {
         front = rear = size = 0;
     }
 
+    /**
+     * Returns a string-representation of all elements in the queue.
+     * @return string-representation of the queue.
+     */
     public String toString() {
         if (isEmpty()) {
             return "[]";
